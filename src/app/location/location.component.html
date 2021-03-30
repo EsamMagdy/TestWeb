@@ -1,0 +1,13 @@
+<app-stepper></app-stepper>
+<!-- <div class="splash-screen" *ngIf="showLoader" #loaderImg>
+  <div class="splash-loader"></div>
+  <img class="splash-logo" src="/assets/download.jfif"> 
+</div> -->
+<div class="stepsdemo-content">
+  <app-saved-locations
+    [savedLocation]="prevLocation"
+    *ngIf="prevLocation && prevLocation.length > 0 && !showNewAddress"
+  ></app-saved-locations>
+
+  <app-new-location *ngIf="showNewAddress"></app-new-location>
+</div>

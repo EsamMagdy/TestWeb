@@ -1,0 +1,5 @@
+:host ::ng-deep .p-inline-message-info	 {
+    width: 100%;
+    justify-content: left;
+    margin-bottom: 1rem;
+}

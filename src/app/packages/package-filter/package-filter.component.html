@@ -1,0 +1,40 @@
+<div  class="card filterForm">
+    <form (ngSubmit)="filterPackages()" #filterForm="ngForm">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-4 txtSearch">
+            <i class="pi pi-search color-7a2cb3" style="font-size: 2rem"></i>
+            <div class="fs-18">Choose the Suited
+                <span class="color-7a2cb3">Profession and Nationality </span>For You
+            </div>
+          </div>
+          <div class="p-field p-col-3">
+            <p-dropdown 
+                name="profession"
+                [(ngModel)]="selectedProfession"
+                [options]="professions" 
+                placeholder="Select a Profession" 
+                optionLabel="value"
+                [showClear]="false"
+                (onChange)="onChangeProfession($event.value)"></p-dropdown>
+
+          </div>
+          <div class="p-field p-col-3">
+            <p-dropdown 
+                name="nationality"
+                [(ngModel)]="selectedNationality"
+                [options]="nationalities" 
+                placeholder="Select a Nationality" 
+                optionLabel="nationalityName" 
+                [showClear]="false"
+                (onChange)="onChangeNationality($event.value)"></p-dropdown>
+
+          </div>
+          <div class="p-field p-col-2">
+            <!-- <p-button type="submit" label="Search"></p-button> -->
+            <button pButton type="button" label="Search" >
+              <i class="pi pi-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+</div>

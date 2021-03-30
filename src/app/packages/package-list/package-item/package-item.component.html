@@ -1,0 +1,101 @@
+<!-- <div class="splash-screen" *ngIf="showLoader" #loaderImg>
+    <div class="splash-loader"></div>
+    <img class="splash-logo" src="/assets/download.jfif"> 
+</div> -->
+<p-messages *ngIf="!packages" severity="info">
+  <ng-template pTemplate>
+    <i class="pi pi-ban"></i>
+    <div class="p-ml-2">No Packages found !</div>
+  </ng-template>
+</p-messages>
+<div *ngIf="packages && packages.length > 0" class="p-grid">
+  <p-panel
+    (click)="onChoosePackage(item)"
+    class="p-col-4"
+    *ngFor="let item of packages"
+    [header]="'Package ' + item.priceTypeName"
+    [ngClass]="{ activePackage: item.isSelected }"
+  >
+    <div *ngIf="item.discount && item.discount > 0; else packagePrice">
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Package Price : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.contractpricewithoutvat | mathRound
+        }}</strong>
+        SAR
+      </div>
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Discount : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.discount | mathRound
+        }}</strong>
+        SAR
+      </div>
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Price After Discount : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.amountafterdiscount | mathRound
+        }}</strong>
+        SAR
+      </div>
+    </div>
+    <ng-template #packagePrice>
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Package Price : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.contractpricewithoutvat
+        }}</strong>
+        SAR
+      </div>
+    </ng-template>
+    <div *ngIf="item.prePaid && item.prePaid > 0">
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Advanced Payment : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.prePaid | mathRound
+        }}</strong>
+        SAR
+      </div>
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Monthly Paid : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.monthlyPaid | mathRound
+        }}</strong>
+        SAR
+      </div>
+    </div>
+    <div
+      *ngIf="
+        item.activationAmount &&
+        item.activationAmount > 0 &&
+        item.activationAmount < item.contractpricewithoutvat
+      "
+    >
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass"
+          >Activation Contract Value Before Vat : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.activationAmount | mathRound
+        }}</strong>
+        SAR
+      </div>
+    </div>
+    <div class="p-field">
+      <span class="p-mr-2 p-mb-2 lblClass">Total Price With Vat : </span
+      ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+        item.contractAmount | mathRound
+      }}</strong>
+      SAR
+    </div>
+    <div *ngIf="item.amountInsurance && item.amountInsurance != 0">
+      <div class="p-field">
+        <span class="p-mr-2 p-mb-2 lblClass">Insurrance : </span
+        ><strong class="color-7a2cb3 p-mr-2 p-mb-2">{{
+          item.amountInsurance | mathRound
+        }}</strong>
+        SAR
+      </div>
+    </div>
+    <i class="pi pi-check-circle icon-package"></i>
+  </p-panel>
+</div>

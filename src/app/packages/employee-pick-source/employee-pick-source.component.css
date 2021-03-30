@@ -1,0 +1,25 @@
+:host ::ng-deep .p-card{
+    border: 1px solid rgb(0, 75, 141);
+    border-radius: 6px;
+    background-color: rgb(227, 242, 255);
+    margin: 0.3rem;
+}
+:host ::ng-deep .p-card-footer{
+    padding:0rem !important;
+}
+:host ::ng-deep .sss .p-card-title{
+    background:none !important;
+    padding: none !important;
+    border-radius: none !important;
+    box-shadow: none !important;
+}
+.housingClass{
+    padding: .3rem;
+    margin: .3rem;
+    border-radius: 0.3rem;
+}
+.housingElementClass{
+    background: white;
+    margin: .3rem;
+    border-radius: .3rem;
+}

@@ -1,1 +1,140 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+    font-family: Open Sans,sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+    font-family: Open Sans,sans-serif;
+}
+
+body {
+    background: rgb(245 246 247);
+}
+
+.splash-logo {
+    left: 50%;
+    top: 50%;
+    margin-left: -26px;
+    margin-top: -26px;
+    z-index: 2;
+    position: absolute;
+    width: 54px;
+}
+
+.splash-loader, .splash-loader:before, .splash-loader:after {
+    left: 50%;
+    top: 50%;
+    margin-left: -45px;
+    margin-top: -45px;
+    position: absolute;
+    vertical-align: middle;
+    background: #2196F3;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.splash-loader {
+    background: transparent;
+}
+
+.splash-loader:before {
+    content: "";
+    animation: bounce 1.5s infinite;
+}
+
+.splash-loader:after {
+    content: "";
+    animation: bounce 1.5s -0.4s infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        -webkit-transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        transform: scale(0.3);
+        -webkit-transform: scale(0.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        -webkit-transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.splash-screen {
+    background-color: #f3f3f3;
+    height: 100%;
+}
+
+input.ng-invalid.ng-touched {
+    border-color: #f44336;
+}
+
+p-dropdown.ng-invalid.ng-touched>.p-dropdown {
+    border-color: #f44336;
+}
+
+.card {
+    padding: 2%;
+    margin: 2% 2% 0 2%;
+    border-radius: 10px;
+}
+
+/* div#p-panel-0 {
+    margin: 2%;
+} */
+
+.stepsdemo-content {
+    margin: 2%;
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 100%;
+}
+
+.color-7a2cb3 {
+    color: #7a2cb3;
+}
+
+.alert-danger {
+    color: #ab0d1c;
+    background-color: #f8d7da;
+    border-color: #e68791;
+}
+
+.p-inline-message-error {
+    width: 100%;
+}
+ .p-card-title{
+    background: #e3f2fd;
+    padding:1rem;
+    border-radius: .3rem;
+    box-shadow: 0 3px 3px -2px rgb(0 0 0 / 20%), 0 3px 4px 0 rgb(0 0 0 / 14%), 0 1px 8px 0 rgb(0 0 0 / 12%);
+}

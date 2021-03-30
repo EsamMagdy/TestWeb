@@ -1,0 +1,108 @@
+<app-stepper></app-stepper>
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Payment </ng-template>
+    <ng-template pTemplate="content">
+      <div class="p-grid p-fluid p-text-center">
+        <div class="p-col-12">
+          <!-- <i class="pi pi-check-circle" style="font-size: 2rem"></i> -->
+          <span class="material-icons iconCheck"> check_circle </span>
+        </div>
+        <div class="p-col-12 fs-24">
+          <span class="p-mr-2">Dear Customer : </span>
+          <span>{{ indContReq.contactName }}</span>
+        </div>
+        <div class="p-col-12 fs-24">
+          <span>The request was registered successfully</span>
+        </div>
+        <div class="p-col-12 fs-24">
+          <span class="p-mr-2">Request Number</span>
+          <span class="createdClass">{{
+            indContReq.contractRequestNumber
+          }}</span>
+        </div>
+        <div class="p-col-12 fs-24">
+          <span class="p-mr-2">Deserved Amount</span>
+          <span class="p-mr-2 createdClass">{{ deservedAmount }}</span>
+          <span>SAR</span>
+        </div>
+        <div ><!--*ngIf="indContReq.canPaid" style="display: contents"-->
+          <div class="p-col-12">
+            <span class="noteClass">
+              <span class="material-icons noteClass"> info </span>
+              Note: 1-You only have 3 hours to pay, the request cancellation
+              process is done automatically, upon completion of the payment you
+              have 24 hours to receive the reserved worker or it may be replaced
+              by another worker if the worker is booked from another
+              customer.<br />
+              2- Upon receiving the worker, you will be requested to sign the
+              contract and the documents required for contracting.
+            </span>
+          </div>
+          <div class="p-col-12">
+            <div class="p-inputgroup">
+              <button
+                routerLink="/onlinePayment"
+                type="button"
+                pButton
+                pRipple
+                label="Pay Now"
+                class="p-mr-3 p-col-2"
+              >
+                <span class="material-icons"> payment </span>
+              </button>
+              <button
+                type="button"
+                pButton
+                pRipple
+                label="Home Page"
+                class="p-mr-3 p-col-2"
+              >
+                <span class="material-icons"> home </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!indContReq.canPaid" style="display: contents">
+          <div class="p-col-12">
+            <span class="createdClass">
+              <span class="material-icons createdClass"> info </span>
+              A new individual contract request has been created but no
+              employment is available for your order now
+            </span>
+          </div>
+          <div class="p-col-12">
+            <span class="sentClass">
+              <span class="material-icons sentClass"> info </span>
+              Your request has been sent to the company to provide employment
+              for your request. Thank you for registering
+            </span>
+          </div>
+          <div class="p-col-12">
+            <div class="p-inputgroup">
+              <button
+                type="button"
+                pButton
+                pRipple
+                label="Home Page"
+                class="p-mr-3 p-col-2"
+              >
+                <span class="material-icons"> home </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="p-col-12"></div>
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="attachmentPage()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

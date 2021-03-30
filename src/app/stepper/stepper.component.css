@@ -1,0 +1,18 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+
+.mat-form-field {
+    margin-top: 16px;
+}
+
+.material-icons {
+    font-size: 50px;
+}
+:host ::ng-deep b {
+    display: block
+}
+
+:host ::ng-deep .p-card-body {
+    padding: 2rem;
+}

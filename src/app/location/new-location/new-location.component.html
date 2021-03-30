@@ -1,0 +1,349 @@
+
+<p-card>
+  <ng-template pTemplate="title"> Determine Your Location </ng-template>
+  <!-- <ng-template pTemplate="subtitle">
+              Enter your personal information
+          </ng-template> -->
+  <ng-template pTemplate="content">
+    <form (ngSubmit)="nextPage()" #locationForm="ngForm">
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-6">
+          <label for="inputEmail4">City</label>
+          <p-dropdown
+            #drpCities="ngModel"
+            name="city"
+            (onChange)="onChangeCity($event.value)"
+            [options]="cities"
+            [(ngModel)]="selectedCity"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="false"
+            [required]="true"
+            placeholder="Select a City"
+            aria-describedby="citiesError"
+          >
+            <ng-template pTemplate="selectedItem">
+              <div class="country-item country-item-value" *ngIf="selectedCity">
+                <div>{{ selectedCity.name }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-city pTemplate="item">
+              <div class="country-item">
+                <div>{{ city.name }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-message
+            *ngIf="
+              (!drpCities.valid && drpCities.touched) ||
+              (!drpCities.valid && submitted)
+            "
+            styleClass="p-mt-1"
+            severity="error"
+            text="City is Required."
+            id="citiesError"
+          >
+          </p-message>
+          <!-- <label
+                *ngIf="
+                  (!drpCities.valid && drpCities.touched) ||
+                  (!drpCities.valid && submitted)
+                "
+                id="citiesError"
+                class="p-error"
+                >City is Required.</label
+              > -->
+        </div>
+        <div class="p-field p-col-6">
+          <label for="inputEmail4">District</label>
+          <p-dropdown
+            #drpDistricts="ngModel"
+            name="district"
+            [required]="true"
+            (onChange)="onChangeDistrict($event.value)"
+            [options]="districts"
+            [(ngModel)]="selectedDistrict"
+            optionLabel="name"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="false"
+            placeholder="Select a District"
+            aria-describedby="districtsError"
+          >
+            <ng-template pTemplate="selectedItem">
+              <div
+                class="country-item country-item-value"
+                *ngIf="selectedDistrict"
+              >
+                <div>{{ selectedDistrict.name }}</div>
+              </div>
+            </ng-template>
+            <ng-template let-district pTemplate="item">
+              <div class="country-item">
+                <div>{{ district.name }}</div>
+              </div>
+            </ng-template>
+          </p-dropdown>
+          <p-message
+            *ngIf="
+              (!drpDistricts.valid && drpDistricts.touched) ||
+              (!drpDistricts.valid && submitted)
+            "
+            styleClass="p-mt-1"
+            severity="error"
+            text="District is Required."
+            id="districtsError"
+          >
+          </p-message>
+          <!-- <label
+                *ngIf="
+                  (!drpDistricts.valid && drpDistricts.touched) ||
+                  (!drpDistricts.valid && submitted)
+                "
+                id="districtsError"
+                class=""
+              >
+                <i class="pi pi-times-circle p-mr-2 p-mb-2"></i>
+                <span class="p-error">District is Required.</span>
+              </label> -->
+        </div>
+      </div>
+      <div *ngIf="showMap">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12">
+            <label for="inputEmail4">Full Address </label>
+            <input
+              id="address"
+              type="text"
+              pInputText
+              class="form-control"
+              [value]="location"
+              name="address"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12">
+            <agm-map [zoom]="12" [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+          </div>
+        </div>
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-6">
+            <label for="inputEmail4">House Type </label>
+            <p-dropdown
+              #drpHousingType="ngModel"
+              name="houseType"
+              [options]="housingType"
+              [(ngModel)]="selectedHousingType"
+              optionLabel="value"
+              [filter]="true"
+              filterBy="value"
+              [showClear]="false"
+              [required]="true"
+              placeholder="Select a House Type"
+              (onChange)="onChangeHouseType($event.value)"
+              aria-describedby="citiesError"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="selectedHousingType"
+                >
+                  <div>{{ selectedHousingType.value }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-housingType pTemplate="item">
+                <div class="country-item">
+                  <div>{{ housingType.value }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <p-message
+              *ngIf="
+                (!drpHousingType.valid && drpHousingType.touched) ||
+                (!drpHousingType.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="House Type is Required."
+              id="citiesError"
+            >
+            </p-message>
+            <!-- <label
+                  *ngIf="
+                    (!drpHousingType.valid && drpHousingType.touched) ||
+                    (!drpHousingType.valid && submitted)
+                  "
+                  id="citiesError"
+                  class="p-error"
+                  >House Type is Required.</label
+                > -->
+          </div>
+          <div class="p-field p-col-6">
+            <label for="inputEmail4">Floor Number </label>
+            <p-dropdown
+              #drpFloorNumber="ngModel"
+              name="floorNumber"
+              [options]="floorNumbers"
+              [(ngModel)]="selectedFloorNumber"
+              optionLabel="value"
+              [filter]="true"
+              filterBy="value"
+              [showClear]="false"
+              [required]="true"
+              placeholder="Select a Floor Number"
+              aria-describedby="citiesError"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="country-item country-item-value"
+                  *ngIf="selectedFloorNumber"
+                >
+                  <div>{{ selectedFloorNumber.value }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-floorNumber pTemplate="item">
+                <div class="country-item">
+                  <div>{{ floorNumber.value }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <p-message
+              *ngIf="
+                (!drpFloorNumber.valid && drpFloorNumber.touched) ||
+                (!drpFloorNumber.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Floor Number is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <!-- <label
+                  *ngIf="
+                    (!drpFloorNumber.valid && drpFloorNumber.touched) ||
+                    (!drpFloorNumber.valid && submitted)
+                  "
+                  id="citiesError"
+                  class="p-error"
+                  >Floor Number is Required.</label
+                > -->
+          </div>
+        </div>
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-6">
+            <label for="inputEmail4">House Number </label>
+            <input
+              id="inputEmail4"
+              type="text"
+              pInputText
+              class="form-control"
+              name="houseNumber"
+              #housingNumber="ngModel"
+              [ngModel]="selectedHouseNumber"
+              required
+            />
+            <p-message
+              *ngIf="
+                (!housingNumber.valid && housingNumber.touched) ||
+                (!housingNumber.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Housing Number Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <!-- <label
+                  *ngIf="
+                    (!housingNumber.valid && housingNumber.touched) ||
+                    (!housingNumber.valid && submitted)
+                  "
+                  class="p-error"
+                  >Housing Number Is Required</label
+                > -->
+          </div>
+          <div class="p-field p-col-6" *ngIf="showApartmentNumber">
+            <label for="apartmentNumber">Apartment Number </label>
+            <input
+              id="apartmentNumber"
+              type="text"
+              pInputText
+              class="form-control"
+              name="apartmentNumber"
+              #apartmentNumber="ngModel"
+              [ngModel]="selectedApartmentNumber"
+              required
+            />
+            <p-message
+              *ngIf="
+                (!apartmentNumber.valid && apartmentNumber.touched) ||
+                (!apartmentNumber.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Apartment Number Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <!-- <label
+                  *ngIf="
+                    (!apartmentNumber.valid && apartmentNumber.touched) ||
+                    (!apartmentNumber.valid && submitted)
+                  "
+                  class="p-error"
+                  >Apartment Number Is Required</label
+                > -->
+          </div>
+        </div>
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-12">
+            <label for="inputEmail4">Address </label>
+            <input
+              id="address"
+              type="text"
+              pInputText
+              class="form-control"
+              [ngModel]="selectedAddress"
+              name="addressNotes"
+              #address="ngModel"
+              required
+            />
+            <p-message
+              *ngIf="
+                (!address.valid && address.touched) ||
+                (!address.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Address Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <!-- <label
+                  *ngIf="
+                    (!address.valid && address.touched) ||
+                    (!address.valid && submitted)
+                  "
+                  class="p-error"
+                  >Address Is Required</label
+                > -->
+          </div>
+        </div>
+      </div>
+      <div class="p-grid p-nogutter p-justify-end">
+        <p-button
+          type="submit"
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+        ></p-button>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-card>

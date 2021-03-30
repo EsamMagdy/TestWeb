@@ -1,0 +1,23 @@
+.iconCheck {
+  font-size: 5em;
+  color: #28a745;
+}
+.fs-24{
+    font-size: 1.5rem;
+}
+.noteClass{
+    color: #dc3545;
+    font-size: 1rem;
+}
+.p-inputgroup{
+    justify-content: center !important;
+    /* display: block !important; */
+}
+.createdClass{
+    color: #7a2cb3;
+    font-size: 1.5rem;
+}
+.sentClass{
+    color: #28a745;
+    font-size: 1.5rem;  
+}

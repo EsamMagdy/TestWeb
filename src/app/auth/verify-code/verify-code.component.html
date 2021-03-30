@@ -1,0 +1,65 @@
+<div class="cards">
+    <div class="p-grid">
+        <div class="p-col-7 p-ai-center p-jc-center">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Please enter the 6-digit verification code we sent via Email:
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div id="wrapper">
+                        <div id="dialog">
+                            <h3></h3>
+                            <form id="form" (ngSubmit)="onSubmit()" #verificationForm="ngForm">
+                                <input ngModel name="1" required (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)" (click)="onFocus($event)"
+                                    type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                                <input ngModel name="2" required (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)" (click)="onFocus($event)"
+                                    type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                                <input ngModel name="3" required (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)" (click)="onFocus($event)"
+                                    type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                                <input ngModel name="4" required (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)" (click)="onFocus($event)"
+                                    type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                                <input ngModel name="5" required (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)" (click)="onFocus($event)"
+                                    type="text" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+                                <input ngModel name="6" required #lastNumber (keyup)="goToNextInput($event)" (keydown)="onKeyDown($event)"
+                                    (click)="onFocus($event)" type="text" maxLength="1" size="1" min="0" max="9"
+                                    pattern="[0-9]{1}" />
+                                <button type="submit" class="btn btn-primary btn-embossed">Verify</button>
+                            </form>
+    
+    
+                        </div>
+                    </div>
+                </ng-template>
+    
+            </p-card>
+        </div>
+        <div class="p-col-1">
+            <p-divider layout="vertical">
+                <!-- <b>OR</b> -->
+            </p-divider>
+        </div>
+        <div class="p-col-4 p-ai-center p-jc-center">
+            <div class="p-fluid">
+                <div class="authWelcome">
+                    <div class="authText">
+                        <h2 class="p-text-center">Welcome again</h2>
+                        <div class="p-d-block"><h3>Please Enter your verification code :</h3> </div>
+                        <ul>
+                            <li><h4>Your Account and Information</h4>
+                            </li>
+                            <li><h4>Your Contracts</h4>
+                            </li>
+                            <li><h4>Follow up your visits</h4>
+                            </li>
+                            <li><h4>Manage Your Requests</h4>
+                            </li>
+                            <li><h4>Communicate with technical support</h4>
+                            </li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success"></p-button> -->
+        </div>
+    </div>
+</div>

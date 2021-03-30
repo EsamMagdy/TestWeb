@@ -1,0 +1,40 @@
+:host ::ng-deep .p-panel {
+    /* width: 30%; */
+    margin: 2%;
+    cursor: pointer;
+}
+:host ::ng-deep .p-panel-header:focus {
+    background: #7a2cb3;
+    color: #fff;
+}
+:host ::ng-deep .p-panel-header{
+    /* background: #0b7ad1; */
+    background: #2196f3;
+    color: #ffffff;
+    border-color: #0b7ad1;
+}
+:host ::ng-deep .p-panel-content{
+    padding: 2rem;
+}
+.icon-package{
+    font-size: 2rem;
+    float: right;
+    margin: -60px 6px 0 0;
+    // color: #7a2cb3;
+    color: black;
+    opacity: .1;
+}
+.lblClass{
+    color: black;
+}
+:host ::ng-deep.activePackage{
+     .p-panel-content{
+
+        background: #e6e6e6 ;
+    }
+    .icon-package{
+        opacity: 1;
+    }
+   
+}
+

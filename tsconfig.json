@@ -2,6 +2,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -17,8 +20,11 @@
     "target": "es2015",
     "module": "es2020",
     "lib": [
+      "es5",
+      "es6",
       "es2018",
-      "dom"
+      "dom",
+      "dom.iterable"
     ]
   },
   "angularCompilerOptions": {

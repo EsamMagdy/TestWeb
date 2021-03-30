@@ -1,0 +1,200 @@
+<p-messages *ngIf="!showEmployeeList&&employees.length==0" severity="info">
+    <ng-template pTemplate>
+        <i class="pi pi-ban"></i>
+        <div class="p-ml-2">No employee found !</div>
+    </ng-template>
+</p-messages>
+<div *ngIf="showEmployeeList" class="p-grid p-formgrid">
+    <div class="p-field p-col-12 p-md-11">
+        <div class="custom-skeleton p-p-4">
+            <ul class="p-m-0 p-p-0">
+                <li class="p-mb-3">
+                    <div class="p-d-flex">
+                        <p-skeleton width="100%" height="2rem" shape="circle" size="4rem" styleClass="p-mr-2">
+                        </p-skeleton>
+                        <div style="flex: 1">
+                            <p-skeleton width="100%" styleClass="p-mb-2"></p-skeleton>
+                            <p-skeleton width="75%"></p-skeleton>
+                        </div>
+                    </div>
+                </li>
+                <li class="p-mb-3">
+                    <div class="p-d-flex">
+                        <p-skeleton shape="circle" size="4rem" styleClass="p-mr-2"></p-skeleton>
+                        <div style="flex: 1">
+                            <p-skeleton width="100%" styleClass="p-mb-2"></p-skeleton>
+                            <p-skeleton width="75%"></p-skeleton>
+                        </div>
+                    </div>
+                </li>
+                <li class="p-mb-3">
+                    <div class="p-d-flex">
+                        <p-skeleton shape="circle" size="4rem" styleClass="p-mr-2"></p-skeleton>
+                        <div style="flex: 1">
+                            <p-skeleton width="100%" styleClass="p-mb-2"></p-skeleton>
+                            <p-skeleton width="75%"></p-skeleton>
+                        </div>
+                    </div>
+                </li>
+                <li class="p-mb-3">
+                    <div class="p-d-flex">
+                        <p-skeleton shape="circle" size="4rem" styleClass="p-mr-2"></p-skeleton>
+                        <div style="flex: 1">
+                            <p-skeleton width="100%" styleClass="p-mb-2"></p-skeleton>
+                            <p-skeleton width="75%"></p-skeleton>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="p-d-flex">
+                        <p-skeleton shape="circle" size="4rem" styleClass="p-mr-2"></p-skeleton>
+                        <div style="flex: 1">
+                            <p-skeleton width="100%" styleClass="p-mb-2"></p-skeleton>
+                            <p-skeleton width="75%"></p-skeleton>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<p-scrollPanel *ngIf="!showEmployeeList &&employees.length>0" [style]="{width: '100%', height: '625px'}"
+    styleClass="custombar1">
+    <div class="">
+        <p-panel iconEmployeeActive (click)="onChooseEmployee(item)" class="p-d-block p-mb-4"
+            *ngFor="let item of employees" [header]="item.candidate.name">
+            <div class="p-grid">
+                <div class="p-col-12 p-d-inline-flex">
+                    <div class="p-col-2">
+                        <img [src]="item.image==null || item.image.startsWith('/')?'/assets/default-profile.png':item.image"
+                            alt="">
+                    </div>
+                    <div class="p-col-8">
+                        <div class="p-d-block p-mb-3">
+                            <span class="p-col-3">Profession:
+                                <span class="color-7a2cb3 p-text-bold">{{item.jobTitle}}</span>
+                            </span>
+                            <span class="p-col-3">Nationality:
+                                <span class="color-7a2cb3 p-text-bold">{{item.jobTitle}}</span>
+                            </span>
+                            <span class="p-col-3" *ngIf="item.candidate.religion">Religion:
+                                <span class="color-7a2cb3 p-text-bold">{{item.candidate.religionName}}</span>
+                            </span>
+                        </div>
+                        <div class="p-d-block">
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.automaticDriving">AutomaticDriving</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.manualDriving">ManualDriving</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.cleaning">Cleaning</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.canCook">CanCook</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.dealWithChildren">DealWithChildren</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.careOfElderly">CareOfElderly</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.speakArabic">SpeakArabic</span>
+                            <span class="candidateClass p-mr-3 p-text-bold"
+                                *ngIf="item.candidate.speakEnglish">SpeakEnglish</span>
+                        </div>
+                    </div>
+                    <div class="p-col-2 p-text-right">
+                        <p-button (click)="showModalDialog(item.employeeId)" icon="pi pi-external-link" label="Details">
+                        </p-button>
+                        <p-dialog *ngIf="displayModal" [header]="'Details '+item.jobTitle " [(visible)]="displayModal"
+                            [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false"
+                            [resizable]="false" position="center" styleClass="mydialog">
+                            <div class="p-text-left">
+                                <div class="p-grid">
+                                    <div class="p-col-10 customP3 p-mt-3">
+                                        <span class="p-col">Name:</span>
+                                        <span>{{employee.name}}</span>
+                                    </div>
+                                    <div class="p-col-2 p-text-right" style="position: relative;">
+                                        <img class="imgEmployee" src="/assets/default-profile.png" alt="">
+                                    </div>
+                                    <div class="p-col-10 p-d-flex customP3">
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Profession: </span>
+                                            <span>{{employee.professionName}}</span>
+                                        </div>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Nationality: </span>
+                                            <span>{{employee.nationalityName}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10 p-d-flex customP3">
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Religion: </span>
+                                            <span>{{employee.religionName}}</span>
+                                        </div>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Marital Status: </span>
+                                            <span>{{employee.maritalStatusName}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10  p-d-flex customP3">
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Age : </span>
+                                            <span>{{employee.age}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10 p-d-felx customP3">
+                                        <span class="employeeDetailsHeader p-d-block">Previous Experience</span>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Treatment of Children : </span>
+                                            <span>{{employee.treatChildren}}</span>
+                                        </div>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Treatment of elderly : </span>
+                                            <span>{{employee.treatOld}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10 p-d-felx customP3">
+                                        <span class="employeeDetailsHeader p-d-block">Previous Experience</span>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>{{employee.prevExperiences}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10 p-d-felx customP3">
+                                        <span class="employeeDetailsHeader p-d-block">Languages</span>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>Arabic : </span>
+                                            <span>{{employee.speakEnglish}}</span>
+                                        </div>
+                                        <div class="p-col-5 p-d-inline">
+                                            <span>English : </span>
+                                            <span>{{employee.speakEnglish}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-col-10 p-d-felx customP3">
+                                        <span class="employeeDetailsHeader p-d-block">Notes</span>
+                                        <div class="p-col-5">
+                                            <span>{{employee.notes}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ng-template pTemplate="footer">
+                                <p-button icon="pi pi-check" (click)="onCloseModal()" label="Ok"
+                                    styleClass="p-button-text btnCloseModal"></p-button>
+                                <button pButton (click)="onChooseEmployee(item)" pRipple type="button"
+                                    [label]="'Select '+item.jobTitle"></button>
+                            </ng-template>
+                        </p-dialog>
+                        <i class="pi pi-check p-mt-3 p-mr-4 iconClass" hidden></i>
+                    </div>
+                </div>
+            </div>
+
+        </p-panel>
+    </div>
+    <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+</p-scrollPanel>
+
+<!-- <div class="p-d-block">
+    <p-paginator [rows]="5" [totalRecords]="totalCount" (onPageChange)="paginate($event)"></p-paginator>
+</div> -->
+

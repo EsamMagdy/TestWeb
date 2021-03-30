@@ -1,0 +1,11 @@
+.employeeHeader{
+    background:#2196f3;
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding: .3rem;
+    border-radius: .3rem;
+}
+.fs1rem{
+    font-size: 1rem;
+}

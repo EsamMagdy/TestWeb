@@ -1,0 +1,12 @@
+.authWelcome{
+    /* background-image: url(../../../assets/sign-bg.jpg); */
+    position: relative;
+    background-size: cover;
+    background-color: #0062cc;
+    color: white;
+    border-radius: .3rem;
+}
+.authText{
+    padding: .3rem;
+    margin: .3rem;
+}

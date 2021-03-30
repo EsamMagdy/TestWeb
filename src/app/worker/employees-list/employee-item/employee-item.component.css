@@ -1,0 +1,137 @@
+.p-scrollpanel p {
+    padding: .5rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+p-scrollpanel .p-scrollpanel-wrapper {
+    border-right: 9px solid var(--layer-1);
+}
+
+:host ::ng-deep .p-scrollpanel .p-scrollpanel-bar {
+    background-color: #2196f3 !important;
+}
+
+:host ::ng-deep .p-scrollpanel-bar-x {
+    background-color: #2196f3 !important;
+    opacity: 1;
+    transition: background-color .2s;
+}
+
+:host ::ng-deep .p-panel-header {
+    /* background: #0b7ad1; */
+    background: #2196f3;
+    color: #ffffff;
+    border-color: #0b7ad1;
+}
+
+.candidateClass {
+    background: #cfe4ff;
+    border-radius: 1rem!important;
+    font-size: .875rem;
+    padding: .5rem;
+}
+
+.employeeDetailsHeader {
+    /* background: #2196f3;
+    color: white;
+    border-radius: .3rem;
+    padding: .3rem;
+    margin: .3rem; */
+    font-weight: 500;
+    /* background: #6c757d94; */
+    color: black;
+    /* border-radius: .3rem; */
+    padding: 0rem;
+    margin: .5rem;
+    border-bottom: 1px solid #6c757d94;
+    font-size: 17px;
+}
+
+.mydialog {
+    /* width: 50vw; */
+    /* height: 350px; */
+    height: 550px;
+    width: 1044.800px;
+}
+
+/* @media screen and (max-width: 40em) {
+    .mydialog {
+        width: 75vw;
+    }
+} */
+
+:host ::ng-deep .p-dialog {
+    margin-top: 70px;
+    /* height: 550px;
+    width: 798px; */
+    height: 550px !important;
+    width: 1044.800px !important;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+    background: white !important;
+    border-bottom: 1px solid black !important;
+}
+
+.imgEmployee {
+    position: absolute;
+    /* top: 100px; */
+    right: 20px;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-footer {
+    border-top: 1px solid #dee2e6;
+    padding: .75rem;
+}
+
+:host ::ng-deep.btnCloseModal {
+    background: #6c757d;
+    color: white;
+}
+
+:host ::ng-deep.p-message {
+    padding: .3rem;
+    height: 70px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin: 0rem;
+}
+
+:host ::ng-deep .p-scrollpanel-bar-y {
+    height: 10px;
+}
+
+.customP3 {
+    padding: .3rem;
+}
+
+.iconClass {
+    font-size: 2rem;
+    font-weight: bold;
+    background: #2196f3;
+    color: white;
+    z-index: -1;
+    border-radius: 50%;
+    padding: .3rem;
+}
+
+ul {
+    list-style-type: none !important;
+}
+
+:host ::ng-deep .custom-scrolltop {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+}
+
+:host ::ng-deep .custom-scrolltop:hover {
+    background-color: var(--primary-color);
+}
+
+.p-scrolltop-icon {
+    font-size: 1rem;
+    color: var(--primary-color-text);
+}

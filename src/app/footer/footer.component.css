@@ -1,0 +1,10 @@
+.css-11ojfo7{
+    height: 70px;
+    position: relative;
+}
+:host ::ng-deep footer{
+    /* left: 0; */
+    /* width: 100%;
+    bottom: 0px;
+    position: relative; */
+  }

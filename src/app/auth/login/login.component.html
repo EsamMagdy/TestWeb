@@ -1,0 +1,59 @@
+<p-card>
+    <ng-template pTemplate="title">
+        Login
+    </ng-template>
+    <ng-template pTemplate="content">
+        <form (ngSubmit)="Login()" #logInForm="ngForm">
+            <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col-12">
+                    <label for="inputEmail4">Mobile Phone </label>
+                    <input id="inputEmail4" type="text" pInputText class="form-control" name="email" #mobile="ngModel"
+                        ngModel required appCheckMobile />
+                        <p-message
+                        *ngIf="
+                          (mobile.errors?.required && mobile.touched)
+                          ||
+                          (mobile.errors?.required && submitted)
+                        "
+                        styleClass="p-mt-1"
+                        severity="error"
+                        text="Mobile Is Required."
+                        id="floorNumberError"
+                      >
+                      </p-message>
+                      <p-message
+                      *ngIf="
+                        (mobile.errors?.notMobile && mobile.touched)
+                        ||
+                          (mobile.errors?.notMobile && submitted)
+                      "
+                      styleClass="p-mt-1"
+                      severity="error"
+                      text="Mobile Is not valid."
+                    >
+                    </p-message>
+                </div>
+            </div>
+            <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col-12">
+                    <label for="inputEmail4">Password </label>
+                    <input id="address" type="password" pInputText class="form-control" ngModel name="password"
+                        #password="ngModel" required />
+                    <p-message *ngIf="
+                      (!password.valid && password.touched) ||
+                      (!password.valid && submitted)
+                    " styleClass="p-mt-1" severity="error" text="Password Is Required." id="floorNumberError">
+                    </p-message>
+                </div>
+            </div>
+            <div class="p-grid p-nogutter">
+                <p-button type="submit" label="LogIn" class="p-mr-3"></p-button>
+                <p-button type="button" styleClass="btnRightClass" label="Swich to Register"
+                    (click)="switchToRegister()"></p-button>
+            </div>
+            <!-- {{ 'SHARED.BUTTONS.CANCEL' | translate }}
+            {{ 'hello' | translate }} -->
+        </form>
+    </ng-template>
+    <!-- <app-toast-alert [message]="error" *ngIf="error"></app-toast-alert> -->
+</p-card>

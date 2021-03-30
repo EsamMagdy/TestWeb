@@ -1,0 +1,18 @@
+<app-stepper></app-stepper>
+<div class="gClass" id="gClass">
+    <div id="workerClass" class="workerClass p-grid">
+        <div class="p-d-inline p-mr-6 filterComponentClass">
+            <app-employees-filter></app-employees-filter>
+        </div>
+        <div class="p-d-inline p-col-8 workerComponentClass">
+            <app-employees-list></app-employees-list>
+            <p-messages #errorMessages [(value)]="errors"></p-messages>
+        </div>
+        <div class="p-col">
+            <div class="p-grid p-nogutter p-justify-between">
+                <p-button label="Back" icon="pi pi-angle-left" (onClick)="locationPage()" ></p-button>
+                <p-button label="Next" icon="pi pi-angle-right" iconPos="right"  (onClick)="requestDetailPage()"></p-button>
+            </div>
+        </div>
+    </div>
+</div>

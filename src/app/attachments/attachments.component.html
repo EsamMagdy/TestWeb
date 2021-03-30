@@ -1,0 +1,210 @@
+<app-stepper></app-stepper>
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Attachments </ng-template>
+    <ng-template pTemplate="content">
+      <p-message
+        severity="info"
+        text=" The process of uploading attachments is a necessary process, and you can skip these steps now, and you should upload them later"
+      >
+      </p-message>
+      <div class="p-grid p-fluid">
+        <div class="p-col-12">
+          <label for="identificationImage" class="p-mb-2 p-text-bold"
+            >Identification Card Image</label
+          >
+          <div class="p-inputgroup">
+            <input
+              #identificationImage
+              pInputText
+              id="identificationImage"
+              style="display: none"
+              type="file"
+              name="identificationImage"
+              ngModel
+            />
+            <input
+              readonly
+              [value]="
+                identificationImage.files[0]
+                  ? identificationImage.files[0].name
+                  : ''
+              "
+              type="text"
+              pInputText
+              placeholder="Select file..."
+            />
+            <button
+              type="button"
+              pButton
+              pRipple
+              icon="pi pi-upload"
+              label="Browse"
+              class="p-mr-3"
+              (click)="identificationImage.click()"
+            ></button>
+            <button
+              (click)="onPrieviewImage(identificationImage)"
+              type="button"
+              class="p-button-secondary"
+              pButton
+              pRipple
+              icon="pi pi-eye"
+              label="Preview"
+            ></button>
+          </div>
+        </div>
+        <div class="p-col-12">
+          <label for="familyImage" class="p-mb-2 p-text-bold"
+            >Family Card Image</label
+          >
+          <div class="p-inputgroup">
+            <input
+              #familyImage
+              pInputText
+              id="familyImage"
+              style="display: none"
+              type="file"
+            />
+            <input
+              readonly
+              [value]="familyImage.files[0] ? familyImage.files[0].name : ''"
+              type="text"
+              pInputText
+              placeholder="Select file..."
+            />
+            <button
+              type="button"
+              pButton
+              pRipple
+              icon="pi pi-upload"
+              label="Browse"
+              class="p-mr-3"
+              (click)="familyImage.click()"
+            ></button>
+            <button
+              (click)="onPrieviewImage(familyImage)"
+              type="button"
+              class="p-button-secondary"
+              pButton
+              pRipple
+              icon="pi pi-eye"
+              label="Preview"
+            ></button>
+          </div>
+        </div>
+        <div class="p-col-12">
+          <label for="nationalAddressImage" class="p-mb-2 p-text-bold"
+            >National Address Image</label
+          >
+          <div class="p-inputgroup">
+            <input
+              #nationalAddressImage
+              pInputText
+              id="nationalAddressImage"
+              style="display: none"
+              type="file"
+            />
+            <input
+              readonly
+              [value]="
+                nationalAddressImage.files[0]
+                  ? nationalAddressImage.files[0].name
+                  : ''
+              "
+              type="text"
+              pInputText
+              placeholder="Select file..."
+            />
+            <button
+              type="button"
+              pButton
+              pRipple
+              icon="pi pi-upload"
+              label="Browse"
+              class="p-mr-3"
+              (click)="nationalAddressImage.click()"
+            ></button>
+            <button
+              (click)="onPrieviewImage(nationalAddressImage)"
+              type="button"
+              class="p-button-secondary"
+              pButton
+              pRipple
+              icon="pi pi-eye"
+              label="Preview"
+            ></button>
+          </div>
+        </div>
+        <div class="p-col-12">
+          <label for="customerSalaryImage" class="p-mb-2 p-text-bold"
+            >Customer Salary Image</label
+          >
+          <div class="p-inputgroup">
+            <input #customerSalaryImage style="display: none" type="file" />
+            <input
+              readonly
+              [value]="
+                customerSalaryImage.files[0]
+                  ? customerSalaryImage.files[0].name
+                  : ''
+              "
+              type="text"
+              pInputText
+              placeholder="Select file..."
+            />
+            <button
+              type="button"
+              pButton
+              pRipple
+              icon="pi pi-upload"
+              label="Browse"
+              class="p-mr-3"
+              (click)="customerSalaryImage.click()"
+            ></button>
+            <button
+              (click)="onPrieviewImage(customerSalaryImage)"
+              type="button"
+              class="p-button-secondary"
+              pButton
+              pRipple
+              icon="pi pi-eye"
+              label="Preview"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <p-galleria
+        [(value)]="images"
+        [(visible)]="displayBasic2"
+        [containerStyle]="{ 'max-width': '850px' }"
+        [circular]="true"
+        [fullScreen]="true"
+        [showItemNavigators]="false"
+        [showThumbnails]="false"
+        [baseZIndex]="100000"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="previewImage" style="width: 100%; display: block" />
+        </ng-template>
+      </p-galleria>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="p-col-12"></div>
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          (onClick)="contractlPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="paymentPage()"
+        >
+        </p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

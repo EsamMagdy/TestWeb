@@ -1,0 +1,170 @@
+<div class="employeeFilter">
+    <form (ngSubmit)="onFilterData()" #filterDataForm="ngForm">
+        <!-- <div class="p-d-block">
+            <label class="txtColorSize">Advanced Search</label>
+        </div> -->
+        <div class="BGColor">
+            <div class="p-d-block">
+                <span class="txtColorSize borderBottom">Advanced Search</span>
+            </div>
+        </div>
+        <div class="BGColor borderBottom">
+            <div class="p-d-block p-mb-3">
+                <span class="txtColorSize">Quick Filters</span>
+            </div>
+            <div class="p-field-checkbox p-d-block">
+                <p-checkbox name="experience" [value]="+'2'"  [(ngModel)]="selectedExpreience" inputId="workedBefore"></p-checkbox>
+                <label for="workedBefore">Worked Before </label>
+            </div>
+            <div class="p-field-checkbox p-d-block">
+                <p-checkbox name="experience" [value]="+'1'"  [(ngModel)]="selectedExpreience" inputId="notWorkedBefore"></p-checkbox>
+                <label for="notWorkedBefore">Never worked before </label>
+            </div>
+        </div>
+        <div class="">
+            <div class="accordion borderBottom" id="religionAccordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header p-grid" id="buttonReligionAccordion">
+                        <button  rotateIcon class="accordion-button p-col-10" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#religionAccordion" aria-expanded="false" aria-controls="religionAccordion">
+                            <span class="txtColorSize">Religion</span>
+                        </button>
+                        <i class="pi pi-chevron-down p-col-2 p-mt-2 p-text-center"></i>
+                    </h2>
+                    <div id="religionAccordion" class="accordion-collapse collapse" aria-labelledby="buttonReligionAccordion"
+                        data-bs-parent="#religionAccordionExample">
+                        <div class="accordion-body">
+                            <div class="p-field-checkbox p-d-inline p-mr-3">
+                                <p-checkbox  name="religion"  [value]="+'1'" [(ngModel)]="selectedRelegion" inputId="muslim"></p-checkbox>
+                                <label for="muslim">Muslim</label>
+                            </div>
+                            <div class="p-field-checkbox p-d-inline">
+                                <p-checkbox name="religion" [value]="+'2'" [(ngModel)]="selectedRelegion" inputId="notMuslim"></p-checkbox>
+                                <label for="notMuslim">Non-Muslim </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="">
+            <div class="accordion borderBottom" id="maritalStatusAccordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header p-grid" id="buttonmaritalStatus">
+                        <button rotateIcon class="accordion-button p-col-10" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#maritalStatusAccordion" aria-expanded="false"
+                            aria-controls="maritalStatusAccordion">
+                            <span class="txtColorSize">Marital Status</span>
+                        </button>
+                        <i class="pi pi-chevron-down p-col-2 p-mt-2 p-text-center"></i>
+                    </h2>
+                    <div id="maritalStatusAccordion" class="accordion-collapse collapse" aria-labelledby="buttonmaritalStatus"
+                        data-bs-parent="#maritalStatusAccordionExample">
+                        <div class="accordion-body">
+                            <div class="p-field-checkbox p-d-inline p-mr-6">
+                                <p-checkbox name="marital_Status" [value]="+'1'" [(ngModel)]="selectedMaritalStatus" inputId="single"></p-checkbox>
+                                <label for="single">Single</label>
+                            </div>
+                            <div class="p-field-checkbox p-d-inline">
+                                <p-checkbox name="marital_Status" [value]="+'2'" [(ngModel)]="selectedMaritalStatus" inputId="married"></p-checkbox>
+                                <label for="married">Married</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="">
+            <div class="accordion borderBottom" id="anotherSkillsAccordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header p-grid" id="headingOne">
+                        <button rotateIcon class="accordion-button p-col-10" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#anotherSkillsAccordion" aria-expanded="false"
+                            aria-controls="anotherSkillsAccordion">
+                            <span class="txtColorSize">Another Skills</span>
+                        </button>
+                        <i class="pi pi-chevron-down p-col-2 p-mt-2 p-text-center"></i>
+                    </h2>
+                    <div id="anotherSkillsAccordion" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#anotherSkillsAccordion">
+                        <div class="accordion-body">
+                            <div *ngIf="showDriver">
+                                <div class="p-field-checkbox p-d-block">
+                                    <p-checkbox name="automaticDriving" [binary]="true" ngModel
+                                        inputId="automaticDriving"></p-checkbox>
+                                    <label for="automaticDriving">Automatic Driving</label>
+                                </div>
+                                <div class="p-field-checkbox p-d-block">
+                                    <p-checkbox name="manualDriving" [binary]="true" ngModel inputId="manualDriving">
+                                    </p-checkbox>
+                                    <label for="manualDriving">Manual Driving</label>
+                                </div>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="cleaning" [binary]="true" ngModel inputId="cleaning"></p-checkbox>
+                                <label for="cleaning">Cleaning</label>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="canCook" [binary]="true" ngModel inputId="canCook"></p-checkbox>
+                                <label for="canCook">Can Cook </label>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="treatChildren" [binary]="true" ngModel
+                                    inputId="dealingWithChildren">
+                                </p-checkbox>
+                                <label for="dealingWithChildren">Dealing with Children </label>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="treatOld" [binary]="true" ngModel
+                                    inputId="dealingWithElderly"></p-checkbox>
+                                <label for="dealingWithElderly">Dealing with the elderly </label>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="speakEnglish" [binary]="true" ngModel inputId="speackEnglish">
+                                </p-checkbox>
+                                <label for="speackEnglish">English language proficiency </label>
+                            </div>
+                            <div class="p-field-checkbox p-d-block">
+                                <p-checkbox name="speakArabic" [binary]="true" ngModel inputId="speakArabic">
+                                </p-checkbox>
+                                <label for="speakArabic">Arabic Language Proficiency</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="BGColor borderBottom">
+            <div class="p-d-block">
+                <span class="txtColorSize">Age</span>
+            </div>
+            <div class="p-d-inline">
+                <h3>Range: {{age[0] + ' - ' + age[1]}}</h3>
+                <p-slider name="age" [(ngModel)]="age" [range]="true"></p-slider>
+            </div>
+        </div>
+        <div class="BGColor">
+            <div class="p-d-block">
+                <span class="txtColorSize">Maximum Number To Display
+                </span>
+            </div>
+            <h3>{{maxNumberToDisplay}}</h3>
+            <p-slider name="pageSize" [(ngModel)]="maxNumberToDisplay"></p-slider>
+        </div>
+        <div class="p-d-block p-text-center p-my-3">
+            <button class="p-mr-2" pButton pRipple type="submit" label="Search"></button>
+            <button 
+                class="p-mr-2"
+                pButton 
+                pRipple 
+                type="button" 
+                label="Clear" 
+                class="p-button-danger"
+                (click)="onClearForm()"></button>
+        </div>
+    </form>
+</div>

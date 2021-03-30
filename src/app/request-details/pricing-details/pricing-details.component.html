@@ -1,0 +1,72 @@
+<div class="p-d-block p-mb-3 employeeHeader">
+    Pricing Data
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Pricing :</span>
+    <span>{{pricing.priceTypeName}}</span>
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Contract Duration :</span>
+    <span>{{pricing.periodinDaiys}}</span>
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Request Date :</span>
+    <span>{{requestDate}}</span>
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Package Price :</span>
+    <span>{{packagePrice}}</span>
+</div>
+<div *ngIf="discount">
+    <div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+        <i class="pi pi-info-circle p-mr-2"></i>
+        <span class="p-text-bold">Discount :</span>
+        <span>{{discount}}</span>
+    </div>
+    <div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+        <i class="pi pi-info-circle p-mr-2"></i>
+        <span class="p-text-bold">Amountafterdiscount :</span>
+        <span>{{amountafterdiscount}}</span>
+    </div>
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Vat Amount :</span>
+    <span>{{vatAmount}}</span>
+</div>
+<div *ngIf="activationAmount && activationAmount <contractPriceWithVat" class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Activation Amount :</span>
+    <span>{{activationAmount}}</span>
+</div>
+<div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Price With Vat :</span>
+    <span>{{contractAmount}}</span>
+</div>
+<div *ngIf="insurancePaymentMethod==2 && sanadAmount" class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Promissory Letter :</span>
+    <span>{{sanadAmount}}</span>
+</div>
+<div *ngIf="prePaid">
+    <div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+        <i class="pi pi-info-circle p-mr-2"></i>
+        <span class="p-text-bold">Promissory Letter :</span>
+        <span>{{prePaid}}</span>
+    </div>
+    <div class="p-d-block p-mx-2 p-mb-2 fs1rem">
+        <i class="pi pi-info-circle p-mr-2"></i>
+        <span class="p-text-bold">Promissory Letter :</span>
+        <span>{{monthlyPaid}}</span>
+    </div>
+</div>
+<div *ngIf="deliveryCost && howtoReceiveWorker==HowToRecieveWorker.Delivery" class="p-d-block p-mx-2 p-mb-2 fs1rem">
+    <i class="pi pi-info-circle p-mr-2"></i>
+    <span class="p-text-bold">Delivery Cost :</span>
+    <span>{{deliveryCost}}</span>
+</div>

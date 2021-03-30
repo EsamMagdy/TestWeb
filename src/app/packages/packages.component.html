@@ -1,0 +1,30 @@
+<app-stepper></app-stepper>
+<div class="stepsdemo-content">
+  <p-card>
+    <ng-template pTemplate="title"> Select Best Package </ng-template>
+    <ng-template pTemplate="content">
+      <app-package-filter></app-package-filter>
+      <app-package-list></app-package-list>
+      <app-employee-pick-source></app-employee-pick-source>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <div class="p-col-12">
+        <p-messages #errorMessages [(value)]="errors"></p-messages>
+      </div>
+      <div class="p-grid p-nogutter p-justify-between">
+        <p-button
+          label="Back"
+          icon="pi pi-angle-left"
+          *ngIf="pricings && pricings.length > 0"
+          (onClick)="locationPage()"
+        ></p-button>
+        <p-button
+          label="Next"
+          icon="pi pi-angle-right"
+          iconPos="right"
+          (onClick)="workerPage()"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-card>
+</div>

@@ -1,0 +1,118 @@
+<p-card *ngIf="prevLocation">
+  <ng-template pTemplate="title" i18n> Select From Saved Address </ng-template>
+  <!-- <ng-template pTemplate="subtitle">
+            Enter your personal information
+        </ng-template> -->
+  <ng-template pTemplate="content">
+    <p-scrollPanel
+      [style]="{ width: '100%', height: '500px' }"
+      styleClass="custombar1"
+    >
+      <div
+        *ngFor="let location of prevLocation; let i = index"
+        [tabindex]="i"
+        class="card p-text-bold"
+        (click)="onSelectLocation(location)"
+        [ngClass]="{ activeLocation: location.isSelected }"
+      >
+        <div class="p-grid">
+          <div class="p-col-7">
+            <div class="p-field">
+              <div class="p-col-4 p-d-inline p-mr-6">
+                <span>City: </span>
+                <span>{{ location.city.name }}</span>
+              </div>
+              <div class="p-col-4 p-d-inline p-mx-3">
+                <span>District: </span>
+                <span>{{ location.district.name }}</span>
+              </div>
+              <div class="p-col-4 p-d-inline p-mx-3">
+                <span>Floor Number: </span>
+                <span>{{ location.floorNumber.value }}</span>
+              </div>
+            </div>
+            <div class="p-field">
+              <div class="p-col-4 p-d-inline p-mr-6">
+                <span>House Type: </span>
+                <span>{{ location.houseType.value }}</span>
+              </div>
+              <div
+                *ngIf="location.apartmentNumber"
+                class="p-col-4 p-d-inline p-mr-6"
+              >
+                <span>Apartment Number: </span>
+                <span>{{ location.apartmentNumber }}</span>
+              </div>
+              <div class="p-col-4 p-d-inline p-mr-6">
+                <span>House Number: </span>
+                <span>{{ location.houseNumber }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <a
+              pButton
+              pRipple
+              type="button"
+              label="Show In Map"
+              class="p-button-outlined p-mr-2 locationButtonClass p-text-bold"
+              style="width: 10rem; cursor: pointer; text-decoration: none"
+              target="_blank"
+              [href]="
+                'http://maps.google.com/maps?q=' +
+                location.latitude +
+                ',' +
+                location.longitude +
+                '&z=15'
+              "
+            >
+              <span class="material-icons"> location_on </span>
+            </a>
+            <button
+              pButton
+              pRipple
+              [tabindex]="i"
+              name="btnDeleteLocation"
+              id="btnDeleteLocation"
+              type="button"
+              label="Delete"
+              class="p-button-raised p-button-danger p-text-bold"
+              style="width: 10rem"
+              (click)="deleteLocation(location)"
+            >
+              <span class="material-icons"> delete_forever </span>
+            </button>
+          </div>
+          <div class="p-col-1">
+            <i class="pi pi-check-circle p-mt-2 iconCircle"></i>
+          </div>
+        </div>
+      </div>
+    </p-scrollPanel>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div *ngIf="!showNewAddressButton" class="p-grid p-nogutter p-justify-end">
+      <p-button
+        type="submit"
+        label="New Address"
+        icon="pi pi-angle-right"
+        iconPos="right"
+        (click)="onNewAddressButtonClick()"
+      ></p-button>
+    </div>
+    <div *ngIf="showNewAddressButton" class="p-grid p-nogutter p-justify-end">
+      <p-button
+        type="submit"
+        label="Next"
+        icon="pi pi-angle-right"
+        iconPos="right"
+        (click)="packagePage()"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-card>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

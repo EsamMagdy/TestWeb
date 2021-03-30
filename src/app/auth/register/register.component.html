@@ -1,0 +1,305 @@
+<p-card>
+  <ng-template pTemplate="title"> Register </ng-template>
+  <ng-template pTemplate="content">
+    <form (ngSubmit)="Register()" #registerForm="ngForm">
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label for="inputFirstName" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Name
+          </label>
+          <div class="p-col-3">
+            <span class="p-float-label">
+              <input
+                id="inputFirstName"
+                type="text"
+                class="form-control"
+                name="firstName"
+                #firstName="ngModel"
+                ngModel
+                required
+                pInputText
+              />
+              <label for="inputFirstName">First Name</label>
+            </span>
+
+            <p-message
+              *ngIf="
+                (!firstName.valid && firstName.touched) ||
+                (!firstName.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="FirstName Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+          <div class="p-col-3">
+            <span class="p-float-label">
+              <input
+                id="inputMiddleName"
+                type="text"
+                pInputText
+                class="form-control"
+                name="middleName"
+                #middleName="ngModel"
+                ngModel
+                required
+              />
+              <label for="inputMiddleName">Middle Name</label>
+            </span>
+            <p-message
+              *ngIf="
+                (!middleName.valid && middleName.touched) ||
+                (!middleName.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Middle Name Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+          <div class="p-col-3">
+            <span class="p-float-label">
+              <input
+                id="inputLastName"
+                type="text"
+                pInputText
+                class="form-control"
+                name="lastName"
+                #lastName="ngModel"
+                ngModel
+                required
+              />
+              <label for="inputLastName">Last Name</label>
+            </span>
+            <p-message
+              *ngIf="
+                (!lastName.valid && lastName.touched) ||
+                (!lastName.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Last Name Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label for="inputEmail" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Email
+          </label>
+          <div class="p-col-12 p-md-10">
+            <input
+              id="inputEmail"
+              type="text"
+              pInputText
+              class="form-control"
+              name="email"
+              #email="ngModel"
+              ngModel
+              required
+              email
+            />
+            <p-message
+              *ngIf="
+                (email.errors?.required && email.touched) ||
+                (email.errors?.required && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Email Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <p-message
+              *ngIf="
+                (email.errors?.email && email.touched)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Enter valid Email."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label for="inputPassword" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Password
+          </label>
+          <div class="p-col-12 p-md-10">
+            <input
+              pPassword
+              id="inputPassword"
+              type="password"
+              pInputText
+              class="form-control"
+              name="password"
+              #password="ngModel"
+              ngModel
+              required
+            />
+            <p-message
+              *ngIf="
+                (!password.valid && password.touched) ||
+                (!password.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Password Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label
+            for="inputConfirmPassword"
+            class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Confirm Password
+          </label>
+          <div class="p-col-12 p-md-10">
+            <input
+              pPassword
+              id="inputConfirmPassword"
+              type="password"
+              pInputText
+              class="form-control"
+              name="confirmPassword"
+              #confirmPassword="ngModel"
+              ngModel
+              required
+              appCheckPassword="password"
+            />
+            <p-message
+              *ngIf="
+                (confirmPassword.errors?.required && confirmPassword.touched) ||
+                (confirmPassword.errors?.required && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Confirm Password Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <p-message
+              *ngIf="
+                confirmPassword.touched && confirmPassword.errors?.notEqual
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Password and Confirm Password does not match."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label for="inputMobile" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Mobile
+          </label>
+          <div class="p-col-12 p-md-10">
+            <input
+            id="inputMobile"
+            type="text"
+            pInputText
+            class="form-control"
+            name="userName"
+            #mobile="ngModel"
+            ngModel
+            required
+            appCheckMobile
+            />
+            <p-message
+              *ngIf="
+                (mobile.errors?.required && mobile.touched)
+                ||
+                (mobile.errors?.required && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Mobile Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+            <p-message
+            *ngIf="
+              (mobile.errors?.notMobile && mobile.touched)
+              ||
+                (mobile.errors?.notMobile && submitted)
+            "
+            styleClass="p-mt-1"
+            severity="error"
+            text="Mobile Is not valid."
+          >
+          </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-fluid">
+        <div class="p-field p-grid">
+          <label for="inputAddress" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"
+            >Address
+          </label>
+          <div class="p-col-12 p-md-10">
+            <input
+              id="inputAddress"
+              type="text"
+              pInputText
+              class="form-control"
+              name="address"
+              #address="ngModel"
+              ngModel
+              required
+            />
+            <p-message
+              *ngIf="
+                (!address.valid && address.touched) ||
+                (!address.valid && submitted)
+              "
+              styleClass="p-mt-1"
+              severity="error"
+              text="Address Is Required."
+              id="floorNumberError"
+            >
+            </p-message>
+          </div>
+        </div>
+      </div>
+      <div class="p-grid p-nogutter">
+        <p-button type="submit" class="p-mr-3" label="Register"></p-button> 
+        <p-button type="button" styleClass="btnRightClass" label="Swich to Login" (click)="switchToLogin()" ></p-button>
+      </div>
+    </form>
+  </ng-template>
+</p-card>
+<p-dialog
+  header="Notes"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p class="p-m-0">{{registrationMessage}}</p>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="displayModal = false"
+      label="Ok"
+      styleClass="p-button-text"
+    ></p-button>
+  </ng-template>
+</p-dialog>

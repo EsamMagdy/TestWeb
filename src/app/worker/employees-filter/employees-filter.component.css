@@ -1,0 +1,109 @@
+.employeeFilter {
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(217, 221, 228);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.txtColorSize {
+    /* color:#7a2cb3; */
+    font-size: 1rem;
+    font-weight: 500;
+    /* padding-bottom: 12px; */
+    /* border-bottom: 1px solid rgb(217, 221, 228); */
+    /* margin-bottom: 16px;  */
+    /* margin-left: 1rem; */
+}
+
+.borderBottom:after {
+    content: "";
+    /* This is necessary for the pseudo element to work. */
+    display: block;
+    /* This will put the pseudo element on its own line. */
+    /* margin: 0 auto; This will center the border. */
+    /* width: 50%; Change this to whatever width you want. */
+    padding-top: 10px;
+    /* This creates some space between the element and the border. */
+    border-bottom: 1px solid rgb(217, 221, 228);
+    ;
+    /* This creates the border. Replace black with whatever color you want. */
+    /* padding-bottom: 12px; */
+    /* margin-bottom: 16px; */
+}
+
+.BGColor {
+    /* background: white; */
+    padding: .3rem;
+    border-radius: .2rem;
+    margin: .3rem;
+}
+
+.fs {
+    font-size: 1.25rem;
+}
+
+.p-field-checkbox {
+    margin-bottom: .5rem !important;
+}
+
+.accordion-button, .accordion-collapse {
+    border: 0px solid !important;
+    background: white;
+    color: black;
+}
+
+.accordion-button:focus {
+    z-index: 3;
+    border-color: white !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+:host ::ng-deep .p-accordion-header {
+    background: white !important;
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem white !important;
+}
+
+a:hover {
+    color: white !important;
+}
+
+.p-accordion-header .p-accordion-header-link {
+    background: white !important;
+}
+
+.accordion-header {
+    margin: .3rem;
+    cursor: pointer;
+}
+
+.accordion-button {
+    padding: .3rem;
+}
+
+.accordion-button:focus {
+    background: white !important;
+    border: 0px solid white !important;
+    box-shadow: none !important;
+}
+
+.accordion-body {
+    padding: .3rem;
+    margin-left: 1rem;
+}
+/* 
+.pi .pi-chevron-down:focus:hover {
+    transform: rotate( 180deg);
+} */
+.accordion-button:not(.collapsed)::after {
+    content: none;
+}
+.accordion-button::after {
+    content: none;
+   
+}

@@ -1,0 +1,54 @@
+<!-- *ngIf="nationalityId" -->
+<p-card *ngIf="showEmployeePickSource" styleClass="sss" [header]="'Select method for '+professionName+' :'">
+    <div class="p-field-radiobutton p-d-inline p-col-4">
+        <p-radioButton (onClick)="employeePickSourceClick()" name="EmployeePickSource"
+            [value]="EmployeePickSource.Website" [(ngModel)]="employeePickSource" inputId="city1"></p-radioButton>
+        <label for="city1">Select from website</label>
+    </div>
+    <div *ngIf="recieveWorkerType!= RecieveWorkerType.DeliveryOnly" class="p-field-radiobutton p-d-inline p-col-4">
+        <p-radioButton (onClick)="employeePickSourceClick()" name="EmployeePickSource"
+            [value]="EmployeePickSource.Company" [(ngModel)]="employeePickSource" inputId="city2"></p-radioButton>
+        <label for="city2">Select from Company branch
+        </label>
+    </div>
+    <ng-template pTemplate="footer">
+        <div *ngIf="showWebsite" class="websiteClass">
+            <div><span style="font-size: 1.5rem;font-weight: 700; margin-bottom: 0.5rem; padding: .3rem;">Receive method
+                    for {{professionName}} :</span></div>
+            <div style="margin-top: 1.3rem;">
+                <div *ngIf="recieveWorkerType== RecieveWorkerType.DeliveryOnly ||
+                            recieveWorkerType==RecieveWorkerType.DeliveryAndFromHousing" class="p-field-radiobutton p-d-inline p-col-4">
+                    <p-radioButton (onClick)="howToRecieveWorkerClick()" name="HowtoReceiveWorker"
+                        [value]="HowToRecieveWorker.Delivery" [(ngModel)]="howtoReceiveWorker" inputId="Delivery">
+                    </p-radioButton>
+                    <label for="Delivery">Deliver to home
+                        <span class="text-danger">( deliver Fees {{deliveryCost}} SAR)</span>
+                    </label>
+                </div>
+                <div *ngIf="recieveWorkerType!= RecieveWorkerType.DeliveryOnly" class="p-field-radiobutton p-d-inline p-col-4">
+                    <p-radioButton (onClick)="howToRecieveWorkerClick()" name="HowtoReceiveWorker"
+                        [value]="HowToRecieveWorker.FromBranch" [(ngModel)]="howtoReceiveWorker" inputId="FromBranch">
+                    </p-radioButton>
+                    <label for="FromBranch">Take from Company branch
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showCompany" class="p-col-12 housingClass">
+            <div class="p-grid" *ngIf="housingBuildings.length>0">
+                <div activeHousingBuilding class="housingElementClass p-col-3" *ngFor="let housingBuilding of housingBuildings" (click)="onChooseHousing(housingBuilding.housingBuildingId)">
+                    <div class="p-col-3 p-d-inline"><img src="/assets/hotel.png" style="width: inherit;"
+                            class="img-fluid">
+                    </div>
+                    <strong class="p-col-3 p-d-inline">{{housingBuilding.branchName }}</strong>
+                    <strong class="p-col-3 p-d-inline">{{housingBuilding.address}}</strong>
+                    <div class="p-d-inline">
+                        <a [href]="housingBuilding.mapUrl" target="_blank">
+                            <img src="/assets/map.png" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-card>
